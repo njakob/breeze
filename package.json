@@ -1,0 +1,51 @@
+{
+  "name": "@njakob/breeze",
+  "version": "0.0.0",
+  "description": "Interactive branching tool built above Git Flow",
+  "author": "Nicolas Jakob <nicow.jakob@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/njakob/breeze",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/njakob/breeze.git"
+  },
+  "bugs": {
+    "url": "https://github.com/njakob/breeze/issues"
+  },
+  "keywords": [
+    "git",
+    "flow",
+    "branch",
+    "release",
+    "feature",
+    "hotfix",
+    "tool",
+    "cli",
+    "command-line"
+  ],
+  "scripts": {
+    "build": "babel -d lib src",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "flow": "flow check",
+    "test": "npm run flow && npm run build",
+    "bump:major": "npm version major -m \"Bump to %s\"",
+    "bump:minor": "npm version minor -m \"Bump to %s\"",
+    "bump:patch": "npm version patch -m \"Bump to %s\"",
+    "prepublish": "npm run test"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-eslint": "^7.1.1",
+    "babel-plugin-syntax-flow": "^6.13.0",
+    "babel-plugin-transform-flow-strip-types": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "eslint": "^3.12.1",
+    "eslint-config-njakob": "^3.1.0",
+    "eslint-plugin-flowtype": "^2.18.2",
+    "eslint-plugin-import": "^2.2.0",
+    "flow-bin": "^0.37.4",
+    "opener": "^1.4.2"
+  }
+}
