@@ -7,3 +7,4 @@
 [include]
 
 [options]
+module.name_mapper='^package.json$' -> '<PROJECT_ROOT>/package.json'

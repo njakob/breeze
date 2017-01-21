@@ -1,7 +1,7 @@
 /* @flow */
 
 import yargs from 'yargs';
-import { version } from '../../package.json';
+import { version } from 'package.json';
 import type { Command, Options } from './common';
 import createContext from './createContext';
 import statusCommand from './statusCommand';

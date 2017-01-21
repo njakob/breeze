@@ -5,6 +5,14 @@
   ],
   "plugins": [
     "syntax-flow",
-    "transform-flow-strip-types"
+    "transform-flow-strip-types",
+    [
+      "module-resolver", {
+        "root": ["./src"],
+        "alias": {
+          "package.json": "./package.json"
+        }
+      }
+    ]
   ]
 }
