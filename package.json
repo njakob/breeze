@@ -47,5 +47,11 @@
     "eslint-plugin-import": "^2.2.0",
     "flow-bin": "^0.37.4",
     "opener": "^1.4.2"
+  },
+  "dependencies": {
+    "@njakob/terminus": "^1.0.0",
+    "nodegit": "^0.16.0",
+    "nodegit-flow": "^0.3.0",
+    "yargs": "^6.6.0"
   }
 }
