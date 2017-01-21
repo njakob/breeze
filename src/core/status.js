@@ -16,10 +16,10 @@ export default async function status({
 }: StatusOptions): Promise<Status> {
   const repository = await nodegit.Repository.open(directory);
   const initialized = await nodegit.Flow.isInitialized(repository);
-  const { version: packageVersion } = await npmHelpers.parsePackage({ directory });
+  const { version } = await npmHelpers.parsePackage(directory);
 
   return {
     initialized,
-    packageVersion,
+    version,
   };
 }

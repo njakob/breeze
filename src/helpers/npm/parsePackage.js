@@ -3,17 +3,11 @@
 import fs from 'fs';
 import path from 'path';
 
-export type ParsePackageOptions = {
-  directory: string;
-};
-
 export type ParsePackage = {
   version: string;
 };
 
-export default async function parsePackage({
-  directory,
-}: ParsePackageOptions): Promise<ParsePackage> {
+export default async function parsePackage(directory: string): Promise<ParsePackage> {
   return new Promise((resolve: (result: ParsePackage) => void, reject: (err: Error) => void) => {
     const packageFilePath = path.join(directory, 'package.json');
 
