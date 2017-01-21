@@ -7,13 +7,13 @@ export type StatusOptions = {
   directory: string;
 };
 
-export type StatusOutput = {
+export type Status = {
   initialized: boolean;
 };
 
 export default async function status({
   directory,
-}: StatusOptions): Promise<StatusOutput> {
+}: StatusOptions): Promise<Status> {
   const repository = await nodegit.Repository.open(directory);
   const initialized = await nodegit.Flow.isInitialized(repository);
   const { version: packageVersion } = await npmHelpers.parsePackage({ directory });
