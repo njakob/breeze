@@ -8,3 +8,4 @@
 
 [options]
 module.name_mapper='^package.json$' -> '<PROJECT_ROOT>/package.json'
+module.name_mapper='^helpers\/\(.*\)$' -> '<PROJECT_ROOT>/src/helpers/\1'
