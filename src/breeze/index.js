@@ -1,35 +1,10 @@
 /* @flow */
 
 import yargs from 'yargs';
-import Terminus from '@njakob/terminus';
-import { version } from '../package.json';
-import status from './status';
-
-type Options = {
-  verbose: number;
-};
-
-type Context = {
-  term: Terminus;
-  verbose: number;
-};
-
-type Command = (ctx: Context) => Promise<*>;
-
-function createContext(options: Options): Context {
-  return {
-    term: new Terminus(),
-    verbose: options.verbose,
-  };
-}
-
-async function statusCommand(ctx: Context): Promise<*> {
-  const output = await status({
-    directory: process.cwd(),
-  });
-
-  ctx.term.log`${output}`;
-}
+import { version } from '../../package.json';
+import type { Command, Options } from './common';
+import createContext from './createContext';
+import statusCommand from './statusCommand';
 
 function yargsHandler(command: Command): (options: Options) => void {
   return (options: Options) => {
