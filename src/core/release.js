@@ -3,7 +3,7 @@
 import semver from 'semver';
 import * as gitHelpers from 'helpers/git';
 import * as npmHelpers from 'helpers/npm';
-import * as errors from 'helpers/errors';
+import * as errorHelpers from 'helpers/error';
 
 export type ReleaseOptions = {
   bump: string;
@@ -25,7 +25,7 @@ export default async function release({
   const initialized = await gitHelpers.isInitialized(repository);
 
   if (!initialized) {
-    throw errors.gitFlowNotInitialized();
+    throw errorHelpers.gitFlowNotInitialized();
   }
 
   const { version } = await npmHelpers.parsePackage(directory);
