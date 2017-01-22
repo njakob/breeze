@@ -2,11 +2,12 @@
 
 export type Options = {
   verbose: number;
+  bump?: string;
 };
 
 export type Context = {
   term: any;
-  verbose: number;
+  options: Options;
 };
 
 export type Command = (ctx: Context) => Promise<*>;

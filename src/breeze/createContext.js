@@ -5,7 +5,7 @@ import type { Options, Context } from './common';
 
 export default function createContext(options: Options): Context {
   return {
+    options,
     term: new Terminus(),
-    verbose: options.verbose,
   };
 }

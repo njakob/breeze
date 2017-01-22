@@ -4,6 +4,7 @@ import yargs from 'yargs';
 import { version } from 'package.json';
 import type { Command, Options } from './common';
 import createContext from './createContext';
+import releaseCommand from './releaseCommand';
 import statusCommand from './statusCommand';
 
 function yargsHandler(command: Command): (options: Options) => void {
@@ -23,6 +24,17 @@ yargs
   .alias('h', 'help')
   .alias('v', 'version')
   .version(version)
+  .command({
+    command: 'release [bump]',
+    desc: 'Start a new release',
+    builder: (y: any): any => y
+      .option('bump', {
+        default: 'minor',
+        desc: 'X',
+        choices: ['minor', 'major'],
+      }),
+    handler: yargsHandler(releaseCommand),
+  })
   .command({
     command: 'status',
     desc: 'Show current repository status',
