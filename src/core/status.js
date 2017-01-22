@@ -1,6 +1,6 @@
 /* @flow */
 
-import nodegit from 'nodegit-flow';
+import * as gitHelpers from 'helpers/git';
 import * as npmHelpers from 'helpers/npm';
 
 export type StatusOptions = {
@@ -14,8 +14,8 @@ export type Status = {
 export default async function status({
   directory,
 }: StatusOptions): Promise<Status> {
-  const repository = await nodegit.Repository.open(directory);
-  const initialized = await nodegit.Flow.isInitialized(repository);
+  const repository = await gitHelpers.openRepository(directory);
+  const initialized = await gitHelpers.isInitialized(repository);
   const { version } = await npmHelpers.parsePackage(directory);
 
   return {
