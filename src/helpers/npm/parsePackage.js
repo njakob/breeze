@@ -2,28 +2,33 @@
 
 import fs from 'fs';
 import path from 'path';
+import type { Bugsy } from 'bugsy';
+import * as errorHelpers from 'helpers/error';
 
 export type ParsePackage = {
   version: string;
 };
 
 export default async function parsePackage(directory: string): Promise<ParsePackage> {
-  return new Promise((resolve: (result: ParsePackage) => void, reject: (err: Error) => void) => {
+  return new Promise((resolve: (result: ParsePackage) => void, reject: (err: Bugsy) => void) => {
     const packageFilePath = path.join(directory, 'package.json');
 
-    fs.readFile(packageFilePath, 'utf8', (err: ?Error, data: string) => {
+    fs.readFile(packageFilePath, 'utf8', (err: ?ErrnoError, data: string): void => {
       if (err) {
-        reject(err);
+        if (err.code === 'ENOENT') {
+          return reject(errorHelpers.npmPackageNotFound());
+        }
+        return reject(errorHelpers.convert(err));
       }
 
       try {
         const { version } = JSON.parse(data);
 
-        resolve({
+        return resolve({
           version,
         });
-      } catch (parseErr) {
-        reject(parseErr);
+      } catch (innerErr) {
+        return reject(errorHelpers.npmPackageUnparseable());
       }
     });
   });

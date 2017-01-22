@@ -12,7 +12,7 @@ function yargsHandler(command: Command): (options: Options) => void {
     const ctx = createContext(options);
 
     command(ctx).catch((err: Error) => {
-      ctx.term.log`${err}`;
+      ctx.term.log`Error: ${err.message}`;
     });
   };
 }
