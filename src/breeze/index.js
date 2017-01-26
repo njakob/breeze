@@ -6,6 +6,7 @@ import type { Command, Options } from './common';
 import createContext from './createContext';
 import releaseCommand from './releaseCommand';
 import statusCommand from './statusCommand';
+import versionCommand from './versionCommand';
 
 function yargsHandler(command: Command): (options: Options) => void {
   return (options: Options) => {
@@ -39,5 +40,10 @@ yargs
     command: 'status',
     desc: 'Show current repository status',
     handler: yargsHandler(statusCommand),
+  })
+  .command({
+    command: 'version',
+    desc: 'Show version',
+    handler: yargsHandler(versionCommand),
   })
   .argv;
