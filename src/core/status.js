@@ -7,13 +7,13 @@ export type StatusOptions = {
   directory: string;
 };
 
-export type Status = {
+export type StatusResult = {
   initialized: boolean;
 };
 
 export default async function status({
   directory,
-}: StatusOptions): Promise<Status> {
+}: StatusOptions): Promise<StatusResult> {
   const repository = await gitHelpers.openRepository(directory);
   const initialized = await gitHelpers.isInitialized(repository);
   const { version } = await npmHelpers.parsePackage(directory);

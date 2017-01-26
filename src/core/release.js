@@ -11,7 +11,7 @@ export type ReleaseOptions = {
   dryRun: boolean;
 };
 
-export type Release = {
+export type ReleaseResult = {
   version: string,
   bumpedVersion: string,
 };
@@ -20,7 +20,7 @@ export default async function release({
   bump,
   directory,
   dryRun,
-}: ReleaseOptions): Promise<Release> {
+}: ReleaseOptions): Promise<ReleaseResult> {
   const repository = await gitHelpers.openRepository(directory);
   const initialized = await gitHelpers.isInitialized(repository);
 
