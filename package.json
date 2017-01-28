@@ -27,7 +27,8 @@
     "breeze": "./bin/breeze.js"
   },
   "scripts": {
-    "build": "babel -d lib src",
+    "clean": "rimraf lib",
+    "build": "npm run clean && babel -d lib src",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "flow": "flow check",
@@ -49,7 +50,8 @@
     "eslint-plugin-flowtype": "^2.18.2",
     "eslint-plugin-import": "^2.2.0",
     "flow-bin": "^0.37.4",
-    "opener": "^1.4.2"
+    "opener": "^1.4.2",
+    "rimraf": "^2.5.4"
   },
   "dependencies": {
     "@njakob/terminus": "^1.0.0",
