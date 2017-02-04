@@ -1127,9 +1127,9 @@ eslint-config-airbnb@^13.0.0:
   dependencies:
     eslint-config-airbnb-base "^10.0.0"
 
-eslint-config-njakob@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-njakob/-/eslint-config-njakob-3.1.0.tgz#ce045dfb2a27c65fc25db5e65d04bd4fb50634e3"
+eslint-config-njakob@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-njakob/-/eslint-config-njakob-3.1.1.tgz#cf9ebfea1857c262fcee572e385c674f0f1ebea5"
   dependencies:
     eslint-config-airbnb "^13.0.0"
 
