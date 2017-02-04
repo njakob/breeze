@@ -1,12 +1,18 @@
 /* @flow */
 
-import { version, name } from 'package.json';
+import { parseParcel } from '@njakob/parcel';
+import pkg from 'package.json';
 import type { Context } from './common';
 
-function stripScope(value: string): string {
-  return value.substring(value.indexOf('/') + 1);
-}
-
 export default async function versionCommand(ctx: Context): Promise<*> {
-  ctx.term.log`${ctx.term.white(stripScope(name))} ${ctx.term.dim(version)}`;
+  const {
+    name,
+    version,
+    author,
+    homepage,
+  } = parseParcel(pkg);
+
+  ctx.term.log`${ctx.term.white(name && name.name)} ${ctx.term.dim(version)}`;
+  ctx.term.log`Built with ${ctx.term.red('❤')} by ${author && author.name}`;
+  ctx.term.log`${ctx.term.blue(homepage)}`;
 }

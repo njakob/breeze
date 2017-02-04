@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@njakob/parcel@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@njakob/parcel/-/parcel-1.0.1.tgz#6475f0085b9b9e01b990b34289b2be111fe54020"
+
 "@njakob/terminus@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@njakob/terminus/-/terminus-1.0.0.tgz#3724f7be8e6e45a80c53e2b23744e309315955cb"
