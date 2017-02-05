@@ -3,7 +3,7 @@
 import semver from 'semver';
 import * as gitHelpers from 'helpers/git';
 import * as npmHelpers from 'helpers/npm';
-import * as errorHelpers from 'helpers/error';
+import recover from './recover';
 
 export type ReleaseOptions = {
   bump: string;
@@ -20,11 +20,10 @@ export default async function release({
   directory,
 }: ReleaseOptions): Promise<ReleaseResult> {
   const repository = await gitHelpers.openRepository(directory);
-  const initialized = await gitHelpers.isInitialized(repository);
 
-  if (!initialized) {
-    throw errorHelpers.gitFlowNotInitialized();
-  }
+  await recover({
+    directory,
+  });
 
   const { version } = await npmHelpers.parsePackage(directory);
   const bumpedVersion = semver.inc(version, bump);
