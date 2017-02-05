@@ -31,7 +31,7 @@ export default async function write({
       'release-prefix': releasePrefix,
       'hotfix-prefix': hotfixPrefix,
       'version-tag-prefix': versionTagPrefix,
-    }), 'utf8'),
+    }, null, '  '), 'utf8'),
     filePath: path.join(directory, NAME),
   });
 }
