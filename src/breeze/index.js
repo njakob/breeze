@@ -4,6 +4,7 @@ import yargs from 'yargs';
 import { version } from 'package.json';
 import type { Command, Options } from './common';
 import createContext from './createContext';
+import initializeCommand from './initializeCommand';
 import releaseCommand from './releaseCommand';
 import statusCommand from './statusCommand';
 import versionCommand from './versionCommand';
@@ -25,6 +26,13 @@ yargs
   .alias('h', 'help')
   .alias('v', 'version')
   .version(version)
+  .demandCommand(1)
+  .command({
+    command: 'initialize',
+    desc: 'Initialize a new breeze project',
+    aliases: ['init'],
+    handler: yargsHandler(initializeCommand),
+  })
   .command({
     command: 'release [bump]',
     desc: 'Start a new release',
