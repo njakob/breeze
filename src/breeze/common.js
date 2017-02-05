@@ -3,6 +3,7 @@
 export type Options = {
   verbose: number;
   bump?: string;
+  name?: string;
 };
 
 export type Context = {

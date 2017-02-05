@@ -5,6 +5,7 @@ import { version } from 'package.json';
 import type { Command, Options } from './common';
 import createContext from './createContext';
 import initializeCommand from './initializeCommand';
+import featureCommand from './featureCommand';
 import releaseCommand from './releaseCommand';
 import statusCommand from './statusCommand';
 import versionCommand from './versionCommand';
@@ -34,12 +35,16 @@ yargs
     handler: yargsHandler(initializeCommand),
   })
   .command({
+    command: 'feature [name]',
+    desc: 'Start a new feature',
+    handler: yargsHandler(featureCommand),
+  })
+  .command({
     command: 'release [bump]',
     desc: 'Start a new release',
     builder: (y: any): any => y
       .option('bump', {
         default: 'minor',
-        desc: 'X',
         choices: ['minor', 'major'],
       }),
     handler: yargsHandler(releaseCommand),

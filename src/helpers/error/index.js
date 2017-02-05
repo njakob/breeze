@@ -6,6 +6,8 @@ import * as codes from './codes';
 export { codes };
 export const convert = bugsy.convert;
 
+export const assertionFailed = bugsy.createError(codes.ASSERTION_FAILED, 'Assertion failed');
+
 export const gitRepositoryNotFound = bugsy.createError(codes.GIT_REPOSITORY_NOT_FOUND, 'Could not find a git repository');
 
 export const gitFlowNotInitialized = bugsy.createError(codes.GIT_FLOW_NOT_INITIALIZED, 'Git-flow is not initialized');

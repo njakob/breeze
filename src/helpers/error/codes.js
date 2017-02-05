@@ -1,5 +1,7 @@
 /* @flow */
 
+export const ASSERTION_FAILED = 'assertion-failed';
+
 export const GIT_REPOSITORY_NOT_FOUND = 'git/repository-not-found';
 
 export const GIT_FLOW_NOT_INITIALIZED = 'git-flow/not-initiailzed';
