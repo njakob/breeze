@@ -2210,13 +2210,11 @@ qs@~6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.3.0.tgz#f403b264f23bc01228c74131b407f18d5ea5d442"
 
-raclette@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/raclette/-/raclette-1.0.0.tgz#8dc8e2e5c0afa363277e4d020ce1d3364e07e59b"
+raclette@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/raclette/-/raclette-1.0.2.tgz#b9486ad67014c295526840fc4dbb2cb6b8fc05ad"
   dependencies:
-    babel-plugin-module-resolver "^2.4.0"
     babel-runtime "^6.22.0"
-    eslint-import-resolver-babel-module "^2.2.1"
 
 randomatic@^1.1.3:
   version "1.1.6"
