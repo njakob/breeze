@@ -16,11 +16,11 @@ export default async function resolve(): Promise<RC> {
   });
 
   return {
-    masterBranch: result['master-branch'],
-    developBranch: result['develop-branch'],
-    featurePrefix: result['feature-prefix'],
-    releasePrefix: result['release-prefix'],
-    hotfixPrefix: result['hotfix-prefix'],
-    versionTagPrefix: result['version-tag-prefix'],
+    masterBranch: result['master-branch'] || 'master',
+    developBranch: result['develop-branch'] || 'develop',
+    featurePrefix: result['feature-prefix'] || 'feature/',
+    releasePrefix: result['release-prefix'] || 'release/',
+    hotfixPrefix: result['hotfix-prefix'] || 'hotfix/',
+    versionTagPrefix: result['version-tag-prefix'] || '',
   };
 }
