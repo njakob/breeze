@@ -8,7 +8,6 @@ import * as errorHelpers from 'helpers/error';
 export type ReleaseOptions = {
   bump: string;
   directory: string;
-  dryRun: boolean;
 };
 
 export type ReleaseResult = {
@@ -19,7 +18,6 @@ export type ReleaseResult = {
 export default async function release({
   bump,
   directory,
-  dryRun,
 }: ReleaseOptions): Promise<ReleaseResult> {
   const repository = await gitHelpers.openRepository(directory);
   const initialized = await gitHelpers.isInitialized(repository);
@@ -31,9 +29,10 @@ export default async function release({
   const { version } = await npmHelpers.parsePackage(directory);
   const bumpedVersion = semver.inc(version, bump);
 
-  if (!dryRun) {
-    await gitHelpers.startRelease(repository, bumpedVersion);
-  }
+  await gitHelpers.startRelease({
+    repository,
+    name: bumpedVersion,
+  });
 
   return {
     version,
