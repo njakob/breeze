@@ -13,10 +13,6 @@ export type InitializeOptions = {
   versionTagPrefix: string;
 };
 
-export type InitializeResult = {
-
-};
-
 export default async function init({
   directory,
   masterBranch,
@@ -25,7 +21,7 @@ export default async function init({
   releasePrefix,
   hotfixPrefix,
   versionTagPrefix,
-}: InitializeOptions): Promise<InitializeResult> {
+}: InitializeOptions): Promise<*> {
   const repository = await gitHelpers.openRepository(directory);
   await gitHelpers.initialize({
     repository,
@@ -49,6 +45,4 @@ export default async function init({
     directory,
     rc,
   });
-
-  return {};
 }
