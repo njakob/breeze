@@ -35,7 +35,7 @@ yargs
     handler: yargsHandler(initializeCommand),
   })
   .command({
-    command: 'feature [name]',
+    command: 'feature <name>',
     desc: 'Start a new feature',
     handler: yargsHandler(featureCommand),
   })
