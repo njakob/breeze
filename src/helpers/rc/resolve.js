@@ -1,11 +1,12 @@
 /* @flow */
 
 import * as rc from 'raclette';
+import * as errorHelpers from 'helpers/error';
 import { NAME } from './common';
 import type { RC } from './common';
 
 export default async function resolve(): Promise<RC> {
-  const { result } = await rc.resolve({
+  const { result, entries } = await rc.resolve({
     name: NAME,
     strategies: [
       rc.strategies.cwd,
@@ -14,6 +15,14 @@ export default async function resolve(): Promise<RC> {
       rc.loaders.json,
     ],
   });
+
+  if (entries.length !== 1) {
+    throw errorHelpers.assertionFailed();
+  }
+
+  if (entries[0].result === null) {
+    throw errorHelpers.rcNotFound();
+  }
 
   return {
     masterBranch: result['master-branch'] || 'master',

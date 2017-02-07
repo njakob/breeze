@@ -14,3 +14,5 @@ export const gitFlowNotInitialized = bugsy.createError(codes.GIT_FLOW_NOT_INITIA
 
 export const npmPackageNotFound = bugsy.createError(codes.NPM_PACKAGE_NOT_FOUND, 'Could not find a package.json file');
 export const npmPackageUnparseable = bugsy.createError(codes.NPM_PACKAGE_UNPARSEABLE, 'Unable to parse package.json file');
+
+export const rcNotFound = bugsy.createError(codes.RC_NOT_FOUND, 'Could not find a .breezerc file');
