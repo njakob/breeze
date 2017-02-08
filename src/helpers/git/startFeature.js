@@ -1,6 +1,7 @@
 /* @flow */
 
 import nodegit from 'nodegit-flow';
+import * as errorHelpers from 'helpers/error';
 import type { Repository } from './common';
 
 export type StartFeatureOptions = {
@@ -12,5 +13,14 @@ export default async function startFeature({
   repository,
   name,
 }: StartFeatureOptions): Promise<*> {
-  return await nodegit.Flow.startFeature(repository, name);
+  try {
+    return await nodegit.Flow.startFeature(repository, name);
+  } catch (err) {
+    switch (true) {
+      case /a reference with that name already exists/.test(err.message):
+        throw errorHelpers.gitFlowReleaseAlreadyExists({ release: name });
+      default:
+        throw err;
+    }
+  }
 }
