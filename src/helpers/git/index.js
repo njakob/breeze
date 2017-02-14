@@ -8,3 +8,5 @@ export type { StartFeatureOptions } from './startFeature';
 export { default as startFeature } from './startFeature';
 export type { StartReleaseOptions } from './startRelease';
 export { default as startRelease } from './startRelease';
+export type { StartHotfixOptions } from './startHotfix';
+export { default as startHotfix } from './startHotfix';

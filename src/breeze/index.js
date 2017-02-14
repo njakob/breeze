@@ -7,6 +7,7 @@ import createContext from './createContext';
 import initializeCommand from './initializeCommand';
 import featureCommand from './featureCommand';
 import releaseCommand from './releaseCommand';
+import hotfixCommand from './hotfixCommand';
 import statusCommand from './statusCommand';
 import versionCommand from './versionCommand';
 
@@ -38,6 +39,11 @@ yargs
     command: 'feature <name>',
     desc: 'Start a new feature',
     handler: yargsHandler(featureCommand),
+  })
+  .command({
+    command: 'hotfix',
+    desc: 'Start a hotfix',
+    handler: yargsHandler(hotfixCommand),
   })
   .command({
     command: 'release [bump]',

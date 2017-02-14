@@ -20,6 +20,14 @@ export const gitFlowReleaseAlreadyExists = ({ release }: { release: string; }) =
   },
 });
 
+export const gitFlowHotfixAlreadyStarted = ({ hotfix }: { hotfix: string; }) => new bugsy.Bugsy({
+  code: codes.GIT_FLOW_HOTFIX_ALREADY_STARTED,
+  message: `Hotfix '${hotfix}' already started`,
+  meta: {
+    hotfix,
+  },
+});
+
 export const npmPackageNotFound = bugsy.createError(codes.NPM_PACKAGE_NOT_FOUND, 'Could not find a package.json file');
 export const npmPackageUnparseable = bugsy.createError(codes.NPM_PACKAGE_UNPARSEABLE, 'Unable to parse package.json file');
 
