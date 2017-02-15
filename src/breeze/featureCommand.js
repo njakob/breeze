@@ -15,4 +15,6 @@ export default async function featureCommand(ctx: Context): Promise<*> {
     name,
     directory: process.cwd(),
   });
+
+  ctx.term.log`Feature '${name}' created ${ctx.term.green('✓')}`;
 }

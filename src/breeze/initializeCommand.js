@@ -14,5 +14,5 @@ export default async function initializeCommand(ctx: Context): Promise<*> {
     versionTagPrefix: '',
   });
 
-  ctx.term.log`<name> initialized`;
+  ctx.term.log`Repository initialized ${ctx.term.green('✓')}`;
 }
