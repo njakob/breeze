@@ -49,7 +49,7 @@
     "eslint-config-njakob": "^3.1.1",
     "eslint-plugin-flowtype": "^2.18.2",
     "eslint-plugin-import": "^2.2.0",
-    "flow-bin": "^0.37.4",
+    "flow-bin": "^0.39.0",
     "opener": "^1.4.2",
     "rimraf": "^2.5.4"
   },
