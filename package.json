@@ -32,11 +32,11 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "flow": "flow check",
-    "test": "npm run flow && npm run build",
+    "validate": "npm run lint && npm run flow",
     "bump:major": "npm version major -m \"Bump to %s\"",
     "bump:minor": "npm version minor -m \"Bump to %s\"",
     "bump:patch": "npm version patch -m \"Bump to %s\"",
-    "prepublish": "npm run test"
+    "prepublish": "npm run validate && npm run build"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
