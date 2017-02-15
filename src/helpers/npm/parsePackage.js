@@ -3,6 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 import type { Bugsy } from 'bugsy';
+import { parseParcel } from '@njakob/parcel';
 import * as errorHelpers from 'helpers/error';
 
 export type ParsePackage = {
@@ -21,15 +22,22 @@ export default async function parsePackage(directory: string): Promise<ParsePack
         return reject(errorHelpers.convert(err));
       }
 
+      let pkg;
       try {
-        const { version } = JSON.parse(data);
-
-        return resolve({
-          version,
-        });
+        pkg = JSON.parse(data);
       } catch (innerErr) {
         return reject(errorHelpers.npmPackageUnparseable());
       }
+
+      const { version } = parseParcel(pkg);
+
+      if (!version) {
+        return reject(errorHelpers.npmPackageUnparseable());
+      }
+
+      return resolve({
+        version,
+      });
     });
   });
 }
