@@ -57,7 +57,7 @@
     "@njakob/parcel": "^1.0.1",
     "@njakob/terminus": "^1.0.0",
     "babel-plugin-module-resolver": "^2.4.0",
-    "bugsy": "^2.1.0",
+    "bugsy": "^2.2.2",
     "eslint-import-resolver-babel-module": "^2.2.1",
     "nodegit": "^0.16.0",
     "nodegit-flow": "^0.3.0",
