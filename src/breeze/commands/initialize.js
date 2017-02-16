@@ -15,10 +15,7 @@ export default async function initializeCommand(ctx: Context): Promise<*> {
     versionTagPrefix: '',
   };
 
-  await initialize({
-    directory,
-    flow,
-  });
+  await initialize({ directory, flow });
 
   ctx.term.log`Repository initialized ${ctx.term.green('✓')}`;
 }

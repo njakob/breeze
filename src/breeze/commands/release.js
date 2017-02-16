@@ -8,12 +8,8 @@ export default async function releaseCommand(ctx: Context): Promise<*> {
   const directory = process.cwd();
   const { bump = 'minor' } = ctx.options;
 
-  const { repository } = await open({
-    directory,
-  });
-  const {
-    bumpedVersion,
-  } = await release({
+  const { repository } = await open({ directory });
+  const { bumpedVersion } = await release({
     bump,
     directory,
     repository,

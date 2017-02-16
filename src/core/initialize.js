@@ -15,17 +15,11 @@ export default async function init({
 }: InitializeOptions): Promise<*> {
   const repository = await gitHelpers.openRepository(directory);
 
-  await gitHelpers.initialize({
-    flow,
-    repository,
-  });
+  await gitHelpers.initialize({ flow, repository });
 
   const rc = {
     ...flow,
   };
 
-  await rcHelpers.write({
-    directory,
-    rc,
-  });
+  await rcHelpers.write({ directory, rc });
 }

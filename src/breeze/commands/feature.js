@@ -13,9 +13,7 @@ export default async function featureCommand(ctx: Context): Promise<*> {
     throw errorHelpers.assertionFailed();
   }
 
-  const { repository } = await open({
-    directory,
-  });
+  const { repository } = await open({ directory });
   await feature({
     name,
     directory,

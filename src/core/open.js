@@ -36,10 +36,7 @@ export default async function open({
     versionTagPrefix,
   };
 
-  await gitHelpers.initialize({
-    flow,
-    repository,
-  });
+  await gitHelpers.initialize({ flow, repository });
 
   return {
     flow,
