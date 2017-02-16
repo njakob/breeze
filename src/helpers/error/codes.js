@@ -5,6 +5,7 @@ export const ASSERTION_FAILED = 'assertion-failed';
 export const GIT_REPOSITORY_NOT_FOUND = 'git/repository-not-found';
 
 export const GIT_FLOW_NOT_INITIALIZED = 'git-flow/not-initiailzed';
+export const GIT_FLOW_FEATURE_ALREADY_EXISTS = 'git-flow/feature-already-exists';
 export const GIT_FLOW_RELEASE_ALREADY_EXISTS = 'git-flow/release-already-exists';
 export const GIT_FLOW_HOTFIX_ALREADY_STARTED = 'git-flow/hotfix-already-started';
 export const GIT_FLOW_BRANCH_UNPROCESSABLE = 'git-flow/branch-unprocessable';

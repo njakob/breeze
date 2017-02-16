@@ -20,7 +20,7 @@ export default async function feature({
   } catch (err) {
     switch (true) {
       case /a reference with that name already exists/.test(err.message):
-        throw errorHelpers.gitFlowReleaseAlreadyExists({ release: name });
+        throw errorHelpers.gitFlowFeatureAlreadyExists({ release: name });
       default:
         throw err;
     }
