@@ -1,7 +1,7 @@
 /* @flow */
 
+import type { Repository } from 'helpers/git/common';
 import * as gitHelpers from 'helpers/git';
-import type { Repository } from './common';
 
 export type FeatureOptions = {
   name: string;

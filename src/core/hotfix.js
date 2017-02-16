@@ -1,9 +1,9 @@
 /* @flow */
 
 import semver from 'semver';
+import type { Repository } from 'helpers/git/common';
 import * as gitHelpers from 'helpers/git';
 import * as npmHelpers from 'helpers/npm';
-import type { Repository } from './common';
 
 export type HotfixOptions = {
   directory: string;
