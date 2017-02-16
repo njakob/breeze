@@ -1,7 +1,8 @@
 /* @flow */
 
-import type { Repository } from 'helpers/git/common';
-import * as gitHelpers from 'helpers/git';
+import nodegit from 'nodegit-flow';
+import * as errorHelpers from 'helpers/error';
+import type { Repository } from 'core/common';
 
 export type FeatureOptions = {
   name: string;
@@ -14,10 +15,16 @@ export default async function feature({
   name,
   repository,
 }: FeatureOptions): Promise<FeatureResult> {
-  await gitHelpers.startFeature({
-    repository,
-    name,
-  });
+  try {
+    await nodegit.Flow.startFeature(repository, name);
+  } catch (err) {
+    switch (true) {
+      case /a reference with that name already exists/.test(err.message):
+        throw errorHelpers.gitFlowReleaseAlreadyExists({ release: name });
+      default:
+        throw err;
+    }
+  }
 
   return {};
 }

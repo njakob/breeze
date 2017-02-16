@@ -10,3 +10,4 @@ export type Flow = {
 };
 
 export type Repository = any;
+export type Reference = any;

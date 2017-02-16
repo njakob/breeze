@@ -1,9 +1,9 @@
 /* @flow */
 
 import semver from 'semver';
-import type { Repository } from 'helpers/git/common';
-import * as gitHelpers from 'helpers/git';
+import nodegit from 'nodegit-flow';
 import * as npmHelpers from 'helpers/npm';
+import type { Repository } from 'core/common';
 
 export type ReleaseOptions = {
   bump: string;
@@ -24,10 +24,7 @@ export default async function release({
   const { version } = await npmHelpers.parsePackage(directory);
   const bumpedVersion = semver.inc(version, bump);
 
-  await gitHelpers.startRelease({
-    repository,
-    name: bumpedVersion,
-  });
+  await nodegit.Flow.startRelease(repository, bumpedVersion);
 
   return {
     version,

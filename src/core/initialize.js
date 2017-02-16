@@ -1,8 +1,8 @@
 /* @flow */
 
 import * as rcHelpers from 'helpers/rc';
-import type { Flow } from 'helpers/git/common';
 import * as gitHelpers from 'helpers/git';
+import type { Flow } from 'core/common';
 
 export type InitializeOptions = {
   directory: string;
@@ -14,14 +14,16 @@ export default async function init({
   flow,
 }: InitializeOptions): Promise<*> {
   const repository = await gitHelpers.openRepository(directory);
+
   await gitHelpers.initialize({
-    repository,
     flow,
+    repository,
   });
 
   const rc = {
     ...flow,
   };
+
   await rcHelpers.write({
     directory,
     rc,

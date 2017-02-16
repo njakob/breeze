@@ -1,7 +1,7 @@
 /* @flow */
 
 import nodegit from 'nodegit-flow';
-import type { Flow, Repository } from './common';
+import type { Flow, Repository } from 'core/common';
 
 export type InitializeOptions = {
   flow: Flow;

@@ -1,9 +1,10 @@
 /* @flow */
 
+import nodegit from 'nodegit-flow';
 import semver from 'semver';
-import type { Repository } from 'helpers/git/common';
-import * as gitHelpers from 'helpers/git';
+import * as errorHelpers from 'helpers/error';
 import * as npmHelpers from 'helpers/npm';
+import type { Repository } from 'core/common';
 
 export type HotfixOptions = {
   directory: string;
@@ -22,10 +23,16 @@ export default async function release({
   const { version } = await npmHelpers.parsePackage(directory);
   const bumpedVersion = semver.inc(version, 'patch');
 
-  await gitHelpers.startHotfix({
-    repository,
-    name: bumpedVersion,
-  });
+  try {
+    await nodegit.Flow.startHotfix(repository, bumpedVersion);
+  } catch (err) {
+    switch (true) {
+      case /a reference with that name already exists/.test(err.message):
+        throw errorHelpers.gitFlowHotfixAlreadyStarted({ hotfix: bumpedVersion });
+      default:
+        throw err;
+    }
+  }
 
   return {
     version,
