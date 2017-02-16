@@ -2,7 +2,7 @@
 
 import open from 'core/open';
 import release from 'core/release';
-import type { Context } from './common';
+import type { Context } from '../common';
 
 export default async function releaseCommand(ctx: Context): Promise<*> {
   const directory = process.cwd();

@@ -2,7 +2,7 @@
 
 import initialize from 'core/initialize';
 import type { Flow } from 'core/common';
-import type { Context } from './common';
+import type { Context } from '../common';
 
 export default async function initializeCommand(ctx: Context): Promise<*> {
   const directory = process.cwd();

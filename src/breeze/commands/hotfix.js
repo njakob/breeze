@@ -2,7 +2,7 @@
 
 import open from 'core/open';
 import hotfix from 'core/hotfix';
-import type { Context } from './common';
+import type { Context } from '../common';
 
 export default async function hotfixCommand(ctx: Context): Promise<*> {
   const directory = process.cwd();

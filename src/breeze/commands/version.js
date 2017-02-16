@@ -2,7 +2,7 @@
 
 import { parseParcel } from '@njakob/parcel';
 import pkg from 'package.json';
-import type { Context } from './common';
+import type { Context } from '../common';
 
 export default async function versionCommand(ctx: Context): Promise<*> {
   const {

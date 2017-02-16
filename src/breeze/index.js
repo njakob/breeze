@@ -4,12 +4,12 @@ import yargs from 'yargs';
 import { version } from 'package.json';
 import type { Command, Options } from './common';
 import createContext from './createContext';
-import initializeCommand from './initializeCommand';
-import featureCommand from './featureCommand';
-import releaseCommand from './releaseCommand';
-import hotfixCommand from './hotfixCommand';
-import statusCommand from './statusCommand';
-import versionCommand from './versionCommand';
+import initializeCommand from './commands/initialize';
+import featureCommand from './commands/feature';
+import releaseCommand from './commands/release';
+import hotfixCommand from './commands/hotfix';
+import statusCommand from './commands/status';
+import versionCommand from './commands/version';
 
 function yargsHandler(command: Command): (options: Options) => void {
   return (options: Options) => {
