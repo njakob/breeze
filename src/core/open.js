@@ -3,13 +3,23 @@
 import * as gitHelpers from 'helpers/git';
 import * as rcHelpers from 'helpers/rc';
 
-export type RecoverOptions = {
+export type OpenOptions = {
   directory: string;
 };
 
-export default async function recover({
+export type OpenResult = {
+  repository: any;
+  masterBranch: string;
+  developBranch: string;
+  featurePrefix: string;
+  releasePrefix: string;
+  hotfixPrefix: string;
+  versionTagPrefix: string;
+};
+
+export default async function open({
   directory,
-}: RecoverOptions): Promise<*> {
+}: OpenOptions): Promise<*> {
   const repository = await gitHelpers.openRepository(directory);
   const {
     masterBranch,
@@ -29,4 +39,14 @@ export default async function recover({
     hotfixPrefix,
     versionTagPrefix,
   });
+
+  return {
+    repository,
+    masterBranch,
+    developBranch,
+    featurePrefix,
+    releasePrefix,
+    hotfixPrefix,
+    versionTagPrefix,
+  };
 }

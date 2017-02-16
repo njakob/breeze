@@ -1,25 +1,23 @@
 /* @flow */
 
 import * as gitHelpers from 'helpers/git';
-import recover from './recover';
+import type { Repository } from './common';
 
 export type FeatureOptions = {
-  directory: string;
   name: string;
+  repository: Repository;
 };
 
+export type FeatureResult = {};
+
 export default async function feature({
-  directory,
   name,
-}: FeatureOptions): Promise<*> {
-  const repository = await gitHelpers.openRepository(directory);
-
-  await recover({
-    directory,
-  });
-
+  repository,
+}: FeatureOptions): Promise<FeatureResult> {
   await gitHelpers.startFeature({
     repository,
     name,
   });
+
+  return {};
 }

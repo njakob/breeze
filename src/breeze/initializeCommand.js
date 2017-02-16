@@ -4,8 +4,10 @@ import initialize from 'core/initialize';
 import type { Context } from './common';
 
 export default async function initializeCommand(ctx: Context): Promise<*> {
+  const directory = process.cwd();
+
   await initialize({
-    directory: process.cwd(),
+    directory,
     masterBranch: 'master',
     developBranch: 'develop',
     featurePrefix: 'feature/',
