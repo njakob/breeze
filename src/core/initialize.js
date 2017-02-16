@@ -1,45 +1,26 @@
 /* @flow */
 
 import * as rcHelpers from 'helpers/rc';
+import type { Flow } from 'helpers/git/common';
 import * as gitHelpers from 'helpers/git';
 
 export type InitializeOptions = {
   directory: string;
-  masterBranch: string;
-  developBranch: string;
-  featurePrefix: string;
-  releasePrefix: string;
-  hotfixPrefix: string;
-  versionTagPrefix: string;
+  flow: Flow;
 };
 
 export default async function init({
   directory,
-  masterBranch,
-  developBranch,
-  featurePrefix,
-  releasePrefix,
-  hotfixPrefix,
-  versionTagPrefix,
+  flow,
 }: InitializeOptions): Promise<*> {
   const repository = await gitHelpers.openRepository(directory);
   await gitHelpers.initialize({
     repository,
-    masterBranch,
-    developBranch,
-    featurePrefix,
-    releasePrefix,
-    hotfixPrefix,
-    versionTagPrefix,
+    flow,
   });
 
   const rc = {
-    masterBranch,
-    developBranch,
-    featurePrefix,
-    releasePrefix,
-    hotfixPrefix,
-    versionTagPrefix,
+    ...flow,
   };
   await rcHelpers.write({
     directory,

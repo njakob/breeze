@@ -1,5 +1,6 @@
 /* @flow */
 
+export type { Flow } from 'helpers/git/common';
 export { codes } from 'helpers/error';
 export { default as status } from 'core/status';
 export type { StatusOptions, StatusResult } from 'core/status';
