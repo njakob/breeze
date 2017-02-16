@@ -8,6 +8,7 @@ import initializeCommand from './commands/initialize';
 import featureCommand from './commands/feature';
 import releaseCommand from './commands/release';
 import hotfixCommand from './commands/hotfix';
+import finishCommand from './commands/finish';
 import statusCommand from './commands/status';
 import versionCommand from './commands/version';
 
@@ -54,6 +55,11 @@ yargs
         choices: ['minor', 'major'],
       }),
     handler: yargsHandler(releaseCommand),
+  })
+  .command({
+    command: 'finish',
+    desc: 'Finish current branch',
+    handler: yargsHandler(finishCommand),
   })
   .command({
     command: 'status',
