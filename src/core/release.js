@@ -36,6 +36,9 @@ export default async function release({
     }
   }
 
+  const signature = nodegit.Signature.default(repository);
+  await repository.createCommitOnHead(['package.json'], signature, signature, `Release ${bumpedVersion}`);
+
   return {
     version,
     bumpedVersion,
