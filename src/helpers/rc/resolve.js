@@ -6,7 +6,7 @@ import { NAME } from './common';
 import type { RC } from './common';
 
 export default async function resolve(): Promise<RC> {
-  const { result, entries } = await rc.resolve({
+  const { result: data, entries } = await rc.resolve({
     name: NAME,
     strategies: [
       rc.strategies.cwd,
@@ -24,12 +24,24 @@ export default async function resolve(): Promise<RC> {
     throw errorHelpers.rcNotFound();
   }
 
+  const { branch: branchData = {} } = data;
+  const { prefix: prefixData = {} } = data;
+  const {
+    master: masterBranch = 'master',
+    develop: developBranch = 'develop',
+  } = branchData;
+  const {
+    feature: featurePrefix = 'feature/',
+    release: releasePrefix = 'release/',
+    hotfix: hotfixPrefix = 'hotfix/',
+    'version-tag': versionTagPrefix = '',
+  } = prefixData;
   return {
-    masterBranch: result['master-branch'] || 'master',
-    developBranch: result['develop-branch'] || 'develop',
-    featurePrefix: result['feature-prefix'] || 'feature/',
-    releasePrefix: result['release-prefix'] || 'release/',
-    hotfixPrefix: result['hotfix-prefix'] || 'hotfix/',
-    versionTagPrefix: result['version-tag-prefix'] || '',
+    masterBranch,
+    developBranch,
+    featurePrefix,
+    releasePrefix,
+    hotfixPrefix,
+    versionTagPrefix,
   };
 }

@@ -25,12 +25,16 @@ export default async function write({
 
   await fsHelpers.writeFile({
     data: new Buffer(JSON.stringify({
-      'master-branch': masterBranch,
-      'develop-branch': developBranch,
-      'feature-prefix': featurePrefix,
-      'release-prefix': releasePrefix,
-      'hotfix-prefix': hotfixPrefix,
-      'version-tag-prefix': versionTagPrefix,
+      branch: {
+        master: masterBranch,
+        develop: developBranch,
+      },
+      prefix: {
+        feature: featurePrefix,
+        release: releasePrefix,
+        hotfix: hotfixPrefix,
+        'version-tag': versionTagPrefix,
+      },
     }, null, '  '), 'utf8'),
     filePath: path.join(directory, NAME),
   });
