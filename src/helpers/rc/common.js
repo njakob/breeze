@@ -7,6 +7,8 @@ export type RC = {
   releasePrefix: string;
   hotfixPrefix: string;
   versionTagPrefix: string;
+  releaseCommit: string;
+  hotfixCommit: string;
 };
 
 export const NAME = '.breezerc';

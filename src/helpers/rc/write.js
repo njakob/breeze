@@ -21,6 +21,8 @@ export default async function write({
     releasePrefix,
     hotfixPrefix,
     versionTagPrefix,
+    releaseCommit,
+    hotfixCommit,
   } = rc;
 
   await fsHelpers.writeFile({
@@ -34,6 +36,10 @@ export default async function write({
         release: releasePrefix,
         hotfix: hotfixPrefix,
         'version-tag': versionTagPrefix,
+      },
+      commit: {
+        release: releaseCommit,
+        hotfix: hotfixCommit,
       },
     }, null, '  '), 'utf8'),
     filePath: path.join(directory, NAME),

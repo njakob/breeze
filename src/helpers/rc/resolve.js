@@ -26,6 +26,8 @@ export default async function resolve(): Promise<RC> {
 
   const { branch: branchData = {} } = data;
   const { prefix: prefixData = {} } = data;
+  const { commit: commitData = {} } = data;
+
   const {
     master: masterBranch = 'master',
     develop: developBranch = 'develop',
@@ -36,6 +38,11 @@ export default async function resolve(): Promise<RC> {
     hotfix: hotfixPrefix = 'hotfix/',
     'version-tag': versionTagPrefix = '',
   } = prefixData;
+  const {
+    release: releaseCommit = 'Bump to %s',
+    hotfix: hotfixCommit = 'Bump to %s',
+  } = commitData;
+
   return {
     masterBranch,
     developBranch,
@@ -43,5 +50,7 @@ export default async function resolve(): Promise<RC> {
     releasePrefix,
     hotfixPrefix,
     versionTagPrefix,
+    releaseCommit,
+    hotfixCommit,
   };
 }
