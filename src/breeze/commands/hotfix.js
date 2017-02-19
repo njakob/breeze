@@ -1,14 +1,14 @@
 /* @flow */
 
-import open from 'core/open';
-import hotfix from 'core/hotfix';
+import Runtime from 'core/Runtime';
 import type { Context } from '../common';
 
 export default async function hotfixCommand(ctx: Context): Promise<*> {
   const directory = process.cwd();
 
-  const { repository } = await open({ directory });
-  const { bumpedVersion } = await hotfix({ directory, repository });
+  const runtime = await Runtime.open({ directory });
+  await runtime.initialize();
+  const { bumpedVersion } = await runtime.hotfix();
 
   ctx.term.log`Hotfix '${bumpedVersion}' created ${ctx.term.green('✓')}`;
 }

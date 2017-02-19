@@ -9,5 +9,6 @@ export type Flow = {
   versionTagPrefix: string;
 };
 
-export type Repository = any;
 export type Reference = any;
+export type Repository = any;
+export type Signature = any;

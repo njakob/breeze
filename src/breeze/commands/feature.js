@@ -1,7 +1,6 @@
 /* @flow */
 
-import open from 'core/open';
-import feature from 'core/feature';
+import Runtime from 'core/Runtime';
 import * as errorHelpers from 'helpers/error';
 import type { Context } from '../common';
 
@@ -13,12 +12,9 @@ export default async function featureCommand(ctx: Context): Promise<*> {
     throw errorHelpers.assertionFailed();
   }
 
-  const { repository } = await open({ directory });
-  await feature({
-    name,
-    directory,
-    repository,
-  });
+  const runtime = await Runtime.open({ directory });
+  await runtime.initialize();
+  await runtime.feature(name);
 
   ctx.term.log`Feature '${name}' created ${ctx.term.green('✓')}`;
 }
