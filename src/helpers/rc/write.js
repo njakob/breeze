@@ -25,23 +25,22 @@ export default async function write({
     hotfixCommit,
   } = rc;
 
-  await fsHelpers.writeFile({
-    data: new Buffer(JSON.stringify({
-      branch: {
-        master: masterBranch,
-        develop: developBranch,
-      },
-      prefix: {
-        feature: featurePrefix,
-        release: releasePrefix,
-        hotfix: hotfixPrefix,
-        'version-tag': versionTagPrefix,
-      },
-      commit: {
-        release: releaseCommit,
-        hotfix: hotfixCommit,
-      },
-    }, null, '  '), 'utf8'),
-    filePath: path.join(directory, NAME),
-  });
+  const filePath = path.join(directory, NAME);
+  const data = new Buffer(JSON.stringify({
+    branch: {
+      master: masterBranch,
+      develop: developBranch,
+    },
+    prefix: {
+      feature: featurePrefix,
+      release: releasePrefix,
+      hotfix: hotfixPrefix,
+      'version-tag': versionTagPrefix,
+    },
+    commit: {
+      release: releaseCommit,
+      hotfix: hotfixCommit,
+    },
+  }, null, '  '), 'utf8');
+  await fsHelpers.writeFile(filePath, data);
 }

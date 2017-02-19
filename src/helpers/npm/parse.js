@@ -9,11 +9,9 @@ export type ParseResult = {
   version: string;
 };
 
-async function readPackage(directory: string): Promise<string> {
+async function readPackage(filePath: string): Promise<string> {
   try {
-    return await fsHelpers.readFile({
-      filePath: path.join(directory, 'package.json')
-    }).toString('utf8');
+    return await fsHelpers.readFile(filePath).toString('utf8');
   } catch (err) {
     if (err.code === 'ENOENT') {
       throw errorHelpers.npmPackageNotFound();
@@ -32,7 +30,8 @@ function parsePackage(data: string): any {
 }
 
 export default async function parse(directory: string): Promise<ParseResult> {
-  const data = await readPackage(directory);
+  const filePath = path.join(directory, 'package.json');
+  const data = await readPackage(filePath);
   const { version } = parseParcel(parsePackage(data));
 
   if (!version) {

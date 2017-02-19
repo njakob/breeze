@@ -2,15 +2,7 @@
 
 import fs from 'fs';
 
-export type WriteFileOptions = {
-  filePath: string;
-  data: Buffer;
-};
-
-export default function writeFile({
-  filePath,
-  data,
-}: WriteFileOptions): Promise<*> {
+export default function writeFile(filePath: string, data: Buffer): Promise<*> {
   return new Promise((resolve: () => void, reject: (err: ErrnoError) => void) => {
     fs.writeFile(filePath, data, (err: ?Error): void => {
       if (err) {
