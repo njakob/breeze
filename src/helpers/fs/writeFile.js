@@ -11,7 +11,7 @@ export default function writeFile({
   filePath,
   data,
 }: WriteFileOptions): Promise<*> {
-  return new Promise((resolve: () => void, reject: (?Error) => void) => {
+  return new Promise((resolve: () => void, reject: (err: ErrnoError) => void) => {
     fs.writeFile(filePath, data, (err: ?Error): void => {
       if (err) {
         return reject(err);
