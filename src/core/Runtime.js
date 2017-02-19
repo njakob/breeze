@@ -52,6 +52,7 @@ export default class Runtime {
     } = await rcHelpers.resolve();
 
     const runtime = new Runtime();
+    runtime.directory = directory;
     runtime.repository = repository;
     runtime.version = version;
     runtime.initialized = initialized;
@@ -112,6 +113,7 @@ export default class Runtime {
       }
     }
 
+    await npmHelpers.fixVersion(this.directory, bumpedVersion);
     await this.repository.createCommitOnHead(['package.json'], this.signature, this.signature, util.format(this.releaseCommit, bumpedVersion));
 
     return {
@@ -135,7 +137,7 @@ export default class Runtime {
       }
     }
 
-
+    await npmHelpers.fixVersion(this.directory, bumpedVersion);
     await this.repository.createCommitOnHead(['package.json'], this.signature, this.signature, util.format(this.hotfixCommit, bumpedVersion));
     this.version = bumpedVersion;
 

@@ -1,6 +1,6 @@
 /* @flow */
 
-import * as path from 'path';
+import path from 'path';
 import * as fsHelpers from 'helpers/fs';
 import { NAME } from './common';
 import type { RC } from './common';
@@ -42,5 +42,6 @@ export default async function write({
       hotfix: hotfixCommit,
     },
   }, null, '  '), 'utf8');
+
   await fsHelpers.writeFile(filePath, data);
 }

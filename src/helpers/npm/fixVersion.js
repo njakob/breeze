@@ -1,7 +1,6 @@
 /* @flow */
 
 import path from 'path';
-import { parseParcel } from '@njakob/parcel';
 import * as fsHelpers from 'helpers/fs';
 import * as errorHelpers from 'helpers/error';
 
@@ -28,21 +27,15 @@ async function readPackage(filePath: string): Promise<string> {
 function parsePackage(data: string): any {
   try {
     return JSON.parse(data);
-  } catch (err) {
+  } catch (innerErr) {
     throw errorHelpers.npmPackageUnparseable();
   }
 }
 
-export default async function parse(directory: string): Promise<ParseResult> {
+export default async function fixVersion(directory: string, version: string): Promise<*> {
   const filePath = path.join(directory, 'package.json');
   const data = await readPackage(filePath);
-  const { version } = parseParcel(parsePackage(data));
-
-  if (!version) {
-    throw errorHelpers.npmPackageUnparseable();
-  }
-
-  return {
-    version,
-  };
+  const pkg = parsePackage(data);
+  pkg.version = version;
+  await fsHelpers.writeFile(filePath, new Buffer(JSON.stringify(pkg, null, '  '), 'utf8'));
 }
