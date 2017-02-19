@@ -6,12 +6,12 @@ import type { Bugsy } from 'bugsy';
 import { parseParcel } from '@njakob/parcel';
 import * as errorHelpers from 'helpers/error';
 
-export type ParsePackage = {
+export type ParseResult = {
   version: string;
 };
 
-export default async function parsePackage(directory: string): Promise<ParsePackage> {
-  return new Promise((resolve: (result: ParsePackage) => void, reject: (err: Bugsy) => void) => {
+export default async function parse(directory: string): Promise<ParseResult> {
+  return new Promise((resolve: (result: ParseResult) => void, reject: (err: Bugsy) => void) => {
     const packageFilePath = path.join(directory, 'package.json');
 
     fs.readFile(packageFilePath, 'utf8', (err: ?ErrnoError, data: string): void => {

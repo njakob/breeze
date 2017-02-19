@@ -1,3 +1,3 @@
 /* @flow */
 
-export { default as parsePackage } from './parsePackage';
+export { default as parse } from './parse';

@@ -37,7 +37,7 @@ export default class Runtime {
 
   static async open({ directory }): Promise<Runtime> {
     const repository = await gitHelpers.openRepository(directory);
-    const { version } = await npmHelpers.parsePackage(directory);
+    const { version } = await npmHelpers.parse(directory);
     const initialized = await nodegit.Flow.isInitialized(repository);
 
     const {
