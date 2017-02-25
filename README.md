@@ -1,15 +1,17 @@
 
-# breeze [![Build Status][build-status-image]][travis] [![ESLint Config][eslint-config-image]][eslint-config]
+# breeze [![NPM version][npm-status-image]][npm] [![Build Status][build-status-image]][travis] [![ESLint Config][eslint-config-image]][eslint-config]
 
-> Git Flow tool built for NPM based packages.
+> Git Flow CLI wrapper for NPM based products
 
-:rotating_light: WIP
+Tired of typing long command lines, naming your hotfix and release branches or constantly checking the state of your repository before finishing branches? Breeze is a tool made for you!
+
+Breeze is a wonderful simple CLI wrapper that would help you to deal with common repetitive tasks that must be done in an NPM based product. It also use a configuration file that can be checked-out in your repository to make sure all contributors use the same Git Flow parameters.
 
 ## Features
 
 * Shared configuration through `.breezerc` file
-* Create a new release automatically bump package version
-* Finish a feature, release or hotfix automatically use the current branch
+* New release or new hotfix automatically bump package version
+* Finishing a branch automatically perform the right operation according to the branch prefix
 
 ## Installation
 
@@ -27,13 +29,37 @@ $ yarn add @njakob/breeze
 
 ## Usage
 
+### Initialization
+
+In order to initialize Breeze for your team, use the following command:
+
 ```sh
 $ breeze init
 ```
 
-```sh
-$ breeze status
+This would create an initial `.breezerc` configuration file that you can checkout in your repository. Besides Git Flow parameters, bump commits for releases and hotfixies can also be configured through this file.
+
+`.breezerc`
+```json
+{
+  "branch": {
+    "master": "master",
+    "develop": "develop"
+  },
+  "prefix": {
+    "feature": "feature/",
+    "release": "release/",
+    "hotfix": "hotfix/",
+    "version-tag": ""
+  },
+  "commit": {
+    "release": "Bump to %s",
+    "hotfix": "Bump to %s"
+  }
+}
 ```
+
+### Creating branches
 
 ```sh
 $ breeze feature
@@ -49,10 +75,6 @@ $ breeze hotfix
 
 ```sh
 $ breeze finish
-```
-
-```sh
-$ breeze version
 ```
 
 ## Licences
