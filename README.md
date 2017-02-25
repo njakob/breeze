@@ -61,17 +61,17 @@ This would create an initial `.breezerc` configuration file that you can checkou
 
 ### Creating branches
 
-```sh
-$ breeze feature
-```
+For each Git Flow operation, a corresponding command is available in the CLI. As shown in the following example, only creating a feature requires a name. Both features and hofixes would automatically use the bumped version as name.
 
 ```sh
-$ breeze release
-```
-
-```sh
+$ breeze feature <name>
+$ breeze release {minor|major}
 $ breeze hotfix
 ```
+
+### Finializing branches
+
+Finishing a branch would automatically apply the correct operation regarding the prefix of the branch.
 
 ```sh
 $ breeze finish
