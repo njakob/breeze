@@ -1,7 +1,7 @@
 {
   "name": "@njakob/breeze",
   "version": "0.0.0",
-  "description": "Git Flow tool built for NPM based packages",
+  "description": "Git Flow CLI wrapper for NPM based products",
   "author": "Nicolas Jakob <nicow.jakob@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/njakob/breeze",
